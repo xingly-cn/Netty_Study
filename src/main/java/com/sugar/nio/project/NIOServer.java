@@ -44,9 +44,10 @@ public class NIOServer {
                 if (key.isAcceptable()) {   // 有新客户端连接
                     // 给客户端生成 SocketChannel
                     SocketChannel socketChannel = serverSocketChannel.accept();
+                    socketChannel.configureBlocking(false);
                     // 注册到 selector 并分配 buffer[服务端]
                     socketChannel.register(selector,SelectionKey.OP_READ,ByteBuffer.allocate(1024));
-
+                    System.out.println("客户端连接成功，生成Channel：" + socketChannel.hashCode());
                 }
                 if (key.isReadable()) {   // 读事件
                     // key 获取频道
