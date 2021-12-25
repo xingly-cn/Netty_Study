@@ -3,6 +3,7 @@ package com.sugar.netty.simple;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -17,7 +18,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public class NettyClient {
     public static void main(String[] args) throws InterruptedException {
         // 创建事件循环组
-        NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
+        EventLoopGroup eventExecutors = new NioEventLoopGroup();
 
         try {
             // 客户端启动对象 配置参数
@@ -36,7 +37,7 @@ public class NettyClient {
             ChannelFuture cf = bootstrap.connect("127.0.0.1", 6666).sync();
 
             // 关闭通道监听
-            cf.channel().close().sync();
+            cf.channel().closeFuture().sync();
         }finally {
             eventExecutors.shutdownGracefully();
         }
