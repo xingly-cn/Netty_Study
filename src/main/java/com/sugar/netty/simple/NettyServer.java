@@ -15,8 +15,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class NettyServer {
     public static void main(String[] args) throws InterruptedException {
         // 创建 bossgroup 和 workergroup
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        // 4 个循环事件组 [1,2,3,4] 顺序分配，当 第五个客户端连接时重头分配 1
+        EventLoopGroup workerGroup = new NioEventLoopGroup(4);
 
         try {
             // 服务器启动对象 配置参数
