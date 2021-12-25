@@ -39,7 +39,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     /**
-     * 读取数据事件
+     * 读取客户端数据
      * @param ctx
      * @param msg
      * @throws Exception
