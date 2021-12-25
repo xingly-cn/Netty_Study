@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     /**
-     * 发送异常处理
+     * 异常处理
      * @param ctx
      * @param cause
      * @throws Exception
