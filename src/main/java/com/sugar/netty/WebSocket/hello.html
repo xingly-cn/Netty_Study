@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebSocket长连接 Demo</title>
+</head>
+<body>
+    <form onsubmit="return false">
+        <textarea name="message" style="height: 300px;width: 300px"></textarea>
+        <button onclick="send(this.form.message.value)">发送消息</button>
+        <textarea id="resp" style="height: 300px;width: 300px"></textarea>
+        <button onclick="document.getElementById('resp').value = ''">清空</button>
+    </form>
+    <script>
+        var socket;
+        // 判断浏览器是否支持
+        if (window.WebSocket) {
+            socket = new WebSocket("ws://localhost:7000/hello")
+            // 读取服务器数据,并加入文本域
+            socket.onmessage = function (ev) {
+                var resp = document.getElementById('resp')
+                resp.value = resp.value + "\n" + ev.data
+            }
+            // 开启连接触发
+            socket.onopen = function (ev) {
+                var resp = document.getElementById('resp')
+                resp.value = resp.value + "\n" + '建立连接成功'
+            }
+
+            // 关闭连接触发
+            socket.onclose = function (ev) {
+                var resp = document.getElementById('resp')
+                resp.value = resp.value + "\n" + '连接关闭成功'
+            }
+        }else {
+            alert("浏览器不支持 WebSocket")
+        }
+
+        // 发送消息给服务器
+        function send (data) {
+            if (!window.socket) {
+                return;
+            }
+            if (socket.readyState == WebSocket.OPEN) {
+                socket.send(data)
+            }else {
+                alert("连接失败")
+            }
+        }
+    </script>
+</body>
+</html>
