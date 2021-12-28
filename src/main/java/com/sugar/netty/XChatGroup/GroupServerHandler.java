@@ -14,7 +14,6 @@ import io.netty.util.concurrent.GlobalEventExecutor;
  * @date 2021/12/28 14:56
  */
 public class GroupServerHandler extends SimpleChannelInboundHandler<String> {
-
     // 定义所有 Channel 组，方便管理
     private static final ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
