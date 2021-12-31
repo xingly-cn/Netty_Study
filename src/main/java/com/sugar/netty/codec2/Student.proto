@@ -1,0 +1,31 @@
+syntax = "proto3";
+option optimize_for = SPEED;  // 加快解析
+option java_package = "com.sugar.netty.codec2";   // 生成包下
+option java_outer_classname = "MyDataInfo"; // 外部类
+
+// 使用 message 管理其他 message
+message MyMessage {
+  enum DataType {
+    StudentType = 0;
+    WorkerType = 1;
+  }
+
+  DataType data_type = 1;
+
+  // 每次枚举最多出现其中一个,节省空间
+  oneof dataBody {
+    Student student = 2;
+    Worker worker = 3;
+  }
+
+}
+
+message Student {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Worker {
+  string name = 1;
+  int32 age = 2;
+}
