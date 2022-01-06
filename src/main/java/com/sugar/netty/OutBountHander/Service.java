@@ -17,7 +17,7 @@ public class Service {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(null);
+                    .childHandler(new ServerInitialzer());
             ChannelFuture cf = bootstrap.bind(7000).sync();
             cf.channel().closeFuture().sync();
 
