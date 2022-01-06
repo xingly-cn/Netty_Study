@@ -17,8 +17,8 @@ public class ServerInitialzer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         ChannelPipeline pipeline = socketChannel.pipeline();
 
-        // 入站解码器
-        pipeline.addLast(new ByteToLongDecoder());
+        // 入站解码器2
+        pipeline.addLast(new ByteToLongDecoder2());
         // 出站解码器
         pipeline.addLast(new LongToByteEncoder());
         // 业务处理器

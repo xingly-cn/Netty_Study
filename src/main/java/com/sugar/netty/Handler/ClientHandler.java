@@ -32,7 +32,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Long> {
         System.out.println("ClientHandler 发送数据");
 //        ctx.writeAndFlush(123456L);
         // 如果这里发送的数据类型 和 定义的不一样，则不会触发 编码器
-        ctx.writeAndFlush(Unpooled.copiedBuffer("abcdabcdabcdabcd", CharsetUtil.UTF_8));
+        ctx.writeAndFlush(123456L);
     }
 
     @Override
