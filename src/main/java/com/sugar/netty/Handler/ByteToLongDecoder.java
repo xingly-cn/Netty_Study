@@ -1,4 +1,4 @@
-package com.sugar.netty.OutBountHander;
+package com.sugar.netty.Handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

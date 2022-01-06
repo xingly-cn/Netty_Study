@@ -1,4 +1,4 @@
-package com.sugar.netty.OutBountHander;
+package com.sugar.netty.Handler;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
