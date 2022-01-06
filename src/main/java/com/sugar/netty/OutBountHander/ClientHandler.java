@@ -11,13 +11,14 @@ import io.netty.util.CharsetUtil;
  */
 public class ClientHandler extends SimpleChannelInboundHandler<Long> {
     /**
-     * 有客户端发送数据时
+     * 接受服务端消息
      * @param ctx
      * @param aLong
      * @throws Exception
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Long aLong) throws Exception {
+        System.out.println("【服务器：" + ctx.channel().remoteAddress() + "】 回复 |" + aLong);
 
     }
 

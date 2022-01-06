@@ -20,6 +20,8 @@ public class ClientInitialzer extends ChannelInitializer<SocketChannel> {
 
         // 出站编码器
         pipeline.addLast(new LongToByteEncoder());
+        // 入站编码器
+        pipeline.addLast(new ByteToLongDecoder());
         // 业务处理器
         pipeline.addLast(new ClientHandler());
     }

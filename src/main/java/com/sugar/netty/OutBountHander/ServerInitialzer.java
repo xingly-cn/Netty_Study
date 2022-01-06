@@ -19,6 +19,8 @@ public class ServerInitialzer extends ChannelInitializer<SocketChannel> {
 
         // 入站解码器
         pipeline.addLast(new ByteToLongDecoder());
+        // 出站解码器
+        pipeline.addLast(new LongToByteEncoder());
         // 业务处理器
         pipeline.addLast(new ServerHandler());
 
