@@ -1,9 +1,12 @@
 package com.sugar.netty.OutBountHander;
 
-import io.netty.buffer.Unpooled;
+
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
+/**
+ * 客户端入站
+ */
 public class ClientHandler extends SimpleChannelInboundHandler<Long> {
     /**
      * 有客户端发送数据时
